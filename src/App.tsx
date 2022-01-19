@@ -2,14 +2,14 @@ import './App.css'
 import React from 'react'
 import ReactRouter from './ReactRouter'
 import {HashRouter} from 'react-router-dom'
-import Layout from '@/component/Layout'
+import Index from "@/component/Layout"
 
 function App() {
   return (
     <HashRouter>
-      <Layout>
+      <Index>
         <ReactRouter></ReactRouter>
-      </Layout>
+      </Index>
     </HashRouter>
   )
 }
