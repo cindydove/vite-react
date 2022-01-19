@@ -4,7 +4,6 @@ import routes from '@/config/route'
 import styles from './index.module.scss'
 
 function Layout(props:any){
-  const { children } = props
   return <div className={styles.layout}>
 
     <div className={styles.menu}>
