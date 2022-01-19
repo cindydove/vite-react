@@ -1,15 +1,15 @@
 import './App.css'
 import React from 'react'
-import ReactRouter from './ReactRouter'
+import ReactRouter from './pages/ReactRouter'
 import {HashRouter} from 'react-router-dom'
-import Index from "@/component/Layout"
+import Layout from "@/component/Layout"
 
 function App() {
   return (
     <HashRouter>
-      <Index>
+      <Layout>
         <ReactRouter></ReactRouter>
-      </Index>
+      </Layout>
     </HashRouter>
   )
 }

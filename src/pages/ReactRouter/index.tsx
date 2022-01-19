@@ -1,5 +1,5 @@
 import {HashRouter as Router,Switch,Route,Link,useParams,useRouteMatch,Redirect,Prompt} from 'react-router-dom'
-import './App.css'
+import '../../App.css'
 import React,{useEffect} from 'react'
 
 function Home() {
@@ -65,7 +65,7 @@ function Topic() {
 
 
 
-function ReactRouter() {
+function Index() {
   return (
 
       <div>
@@ -111,4 +111,4 @@ function ReactRouter() {
   )
 }
 
-export default ReactRouter
+export default Index
