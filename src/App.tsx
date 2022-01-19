@@ -8,7 +8,6 @@ function App() {
   return (
     <HashRouter>
       <Layout>
-        <ReactRouter></ReactRouter>
       </Layout>
     </HashRouter>
   )

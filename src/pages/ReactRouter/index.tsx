@@ -51,7 +51,7 @@ function Topics() {
         </Route>
         <Route path={match.path}>
           <h3>Please select a topic.</h3>
-          <Redirect to="/users" />
+          <Redirect to="/router/users" />
         </Route>
       </Switch>
     </div>
@@ -72,16 +72,16 @@ function Index() {
         <nav>
           <ul>
             <li>
-              <Link to="/home">Home</Link>
+              <Link to="/router/home">Home</Link>
             </li>
             <li>
-              <Link to="/about">About</Link>
+              <Link to="/router/about">About</Link>
             </li>
             <li>
-              <Link to="/users">Users</Link>
+              <Link to="/router/users">Users</Link>
             </li>
             <li>
-              <Link to="/topics">topics</Link>
+              <Link to="/router/topics">topics</Link>
             </li>
           </ul>
         </nav>
@@ -91,20 +91,20 @@ function Index() {
         <Switch>
           {/* from 要进行重定向的路径名*/}
           {/* from 参数仅支持在 Switch 组件内的 Redirect组件使用  */}
-          <Redirect from='/topics' to='/' />
-          <Route path="/about" component={About}>
+          <Redirect from='/router/topics' to='/' />
+          <Route path="/router/about" component={About}>
           </Route>
-          <Route path="/users" render={Users}>
+          <Route path="/router/users" render={Users}>
           </Route>
-          <Route path="/topics"  >
+          <Route path="/router/topics"  >
             <Topics />
           </Route>
-          <Route  path="/home" exact >
+          <Route  path="/router/home" exact >
             <Home></Home>
           </Route>
 
         </Switch>
-        <Route path="/users">
+        <Route >
           <div>我没有path</div>
         </Route>
       </div>

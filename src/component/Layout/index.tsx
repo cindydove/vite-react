@@ -1,5 +1,6 @@
 import React from 'react'
-import {Link} from "react-router-dom";
+import {Link,Switch,Route} from "react-router-dom";
+import ReactRouter from '@/pages/ReactRouter'
 import styles from './index.module.scss'
 
 function Layout(props:any){
@@ -9,10 +10,10 @@ function Layout(props:any){
     <div className={styles.menu}>
       <ul>
         <li>
-          <Link to='./router'>路由</Link>
+          <Link to='/router'>路由</Link>
         </li>
         <li>
-          <Link to='./redux'>redux</Link>
+          <Link to='/redux'>redux</Link>
         </li>
       </ul>
     </div>
@@ -20,7 +21,12 @@ function Layout(props:any){
 
     </div>
     <div className={styles.content}>
-      {children}
+      <Switch>
+        <Route path='/router' >
+          <ReactRouter></ReactRouter>
+        </Route>
+        <Route path='/redux'><div>redux</div></Route>
+      </Switch>
     </div>
     </div>
 }
