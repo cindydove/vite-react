@@ -9,20 +9,19 @@
 
 // 实例属性：实例属性指的是在 `构造函数方法中`定义的属性和方法，每一个实例对象都独立开辟一块内存空间用于保存属性和方法。
 // 原型属性：原型属性指的是用于创建实例对象的 `构造函数的原型` 的属性，每一个创建的实例对象都共享原型属性。
-export const deepClone = (obj:any)=>{
+export const deepClone = (obj: any) => {
+    if (obj instanceof RegExp) return new RegExp(obj);
+    if (obj instanceof Date) return new Date(obj);
 
-  if(obj instanceof RegExp) return new RegExp(obj);
-  if(obj instanceof Date) return new Date(obj);
-
-  if(typeof obj !== 'object' || obj === null){
-    return obj
-  }else{
-    const newObj:Record<string,any> = {}
-    for(let key in obj){
-      if(obj.hasOwnProperty(key)){
-        newObj[key] = deepClone(obj[key])
-      }
+    if (typeof obj !== 'object' || obj === null) {
+        return obj;
+    } else {
+        const newObj: Record<string, any> = {};
+        for (let key in obj) {
+            if (obj.hasOwnProperty(key)) {
+                newObj[key] = deepClone(obj[key]);
+            }
+        }
+        return newObj;
     }
-    return newObj
-  }
-}
+};

@@ -1,7 +1,7 @@
-import React from 'react'
+import React from 'react';
 
-function Redux(){
-    return <>Redux</>
+function Redux() {
+    return <>Redux</>;
 }
 
-export default Redux
+export default Redux;

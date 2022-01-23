@@ -1,8 +1,9 @@
-### vite项目构建
+### vite 项目构建
 
 1. 配置别名
 
 `vite.config.ts`
+
 ```json
 resolve: {
     alias: {
@@ -10,7 +11,9 @@ resolve: {
     },
   },
 ```
+
 `tsconfig.json`
+
 ```json
 {
   "compilerOptions": {
@@ -23,4 +26,3 @@ resolve: {
   "include": ["./src"]
 }
 ```
-

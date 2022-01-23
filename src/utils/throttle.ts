@@ -18,17 +18,16 @@
 //    }
 // }
 
-const throttle = (func,delay)=>{
-    let timer = null
-    return function(){
-        if(!timer){
-            timer = setTimeout(()=>{
-                func.apply(this, arguments)
-                timer = null
-            },delay)
+const throttle = (func, delay) => {
+    let timer = null;
+    return function () {
+        if (!timer) {
+            timer = setTimeout(() => {
+                func.apply(this, arguments);
+                timer = null;
+            }, delay);
         }
+    };
+};
 
-    }
-}
-
-export default throttle
+export default throttle;
