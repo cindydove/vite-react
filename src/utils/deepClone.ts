@@ -12,11 +12,10 @@
 export const deepClone = (obj: any) => {
     if (obj instanceof RegExp) return new RegExp(obj);
     if (obj instanceof Date) return new Date(obj);
-
     if (typeof obj !== 'object' || obj === null) {
         return obj;
     } else {
-        const newObj: Record<string, any> = {};
+        const newObj: any = Array.isArray(obj) ? []: {};
         for (let key in obj) {
             if (obj.hasOwnProperty(key)) {
                 newObj[key] = deepClone(obj[key]);
