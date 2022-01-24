@@ -1,3 +1,8 @@
+// 创建一个空的简单JavaScript对象，即 {}；
+// 将构造函数的作用域赋给新对象（this指向新对象）；
+// 执行构造函数中的代码（为新对象添加属性）；
+// 如果该函数没有返回对象，则返回this。
+
 function _new(ctor:Function, ...args:any) {
   if (typeof ctor !== 'function') {
     throw 'ctor must be a function';
