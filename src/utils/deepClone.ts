@@ -1,4 +1,4 @@
-// type of 返回值类型： “number”、“string”、“boolean”、“object”、“function”、“undefined”。
+// type of 返回值类型： “number”、“string”、“boolean”、“object”、“function”、“undefined”、"symbol"。
 // typeof对于原始类型来说，除了null都可以显示正确类型
 // typeof对于对象来说，除了函数都会显示object
 
