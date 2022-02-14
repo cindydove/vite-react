@@ -1,6 +1,7 @@
 Array.prototype.myFlat = function (deep) {
     const isUndefined = typeof deep === 'undefined' || typeof deep === 'null';
     const newDeep = isUndefined ? 1 : deep;
+    console.log('dx----deep', deep, newDeep, newDeep >= 1);
     if (newDeep >= 1) {
         return this.reduce(
             (pre, cur) => pre.concat(Array.isArray(cur) ? cur.myFlat(deep - 1) : cur),
@@ -22,3 +23,4 @@ console.log('flat1', arrTest.myFlat(1));
 console.log('flat undefined', arrTest.myFlat());
 console.log('flat 2', arrTest.myFlat(2));
 console.log('flat 3', arrTest.myFlat(3));
+console.log('flat Infinity', arrTest.myFlat(Infinity));
