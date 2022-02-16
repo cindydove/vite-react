@@ -13,7 +13,8 @@ class Child2 extends Component {
 const ForwardChild = React.forwardRef((props, ref) => {
     console.log('dx---ForwardChild ref', ref);
     // return <button ref={ref}>{props.children}</button>;
-    return <Child2 ref={ref}>{props.children}</Child2>;
+    // return <Child2 ref={ref}>{props.children}</Child2>;
+    return <Child1 ref={ref}>{props.children}</Child1>;
 });
 
 export default function ForwardParent() {

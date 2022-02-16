@@ -4,6 +4,7 @@ import VirtualDom from '@/pages/VirtualDom';
 import Debounce from '@/pages/Debounce';
 import ForwardRef from '@/pages/ForwardRef';
 import HooksTest from '@/pages/Hooks';
+import StateTest from '@/pages/stateTest';
 
 const routes = [
     { path: '/router', component: ReactRouter, name: '路由' },
@@ -11,7 +12,8 @@ const routes = [
     { path: '/virtualDom', component: VirtualDom, name: 'VirtualDom' },
     { path: '/debounce', component: Debounce, name: 'Debounce' },
     { path: '/forwardRef', component: ForwardRef, name: 'ForwardRef' },
-    { path: '/HooksTest', component: HooksTest, name: 'HooksTest' }
+    { path: '/HooksTest', component: HooksTest, name: 'HooksTest' },
+    { path: '/StateTest', component: StateTest, name: 'StateTest' }
 ];
 
 export default routes;
