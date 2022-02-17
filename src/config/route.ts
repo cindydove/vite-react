@@ -6,6 +6,7 @@ import ForwardRef from '@/pages/ForwardRef';
 import HooksTest from '@/pages/Hooks';
 import StateTest from '@/pages/stateTest';
 import DOMDiff from '@/pages/DOMDiff';
+import BFC from '@/pages/BFC';
 
 const routes = [
     { path: '/router', component: ReactRouter, name: '路由' },
@@ -15,7 +16,8 @@ const routes = [
     { path: '/forwardRef', component: ForwardRef, name: 'ForwardRef' },
     { path: '/HooksTest', component: HooksTest, name: 'HooksTest' },
     { path: '/StateTest', component: StateTest, name: 'StateTest' },
-    { path: '/domDiff', component: DOMDiff, name: 'DOMDiff' }
+    { path: '/domDiff', component: DOMDiff, name: 'DOMDiff' },
+    { path: '/bfc', component: BFC, name: 'bfc' }
 ];
 
 export default routes;
