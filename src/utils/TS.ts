@@ -152,3 +152,25 @@
 // type Extract<T,U> = T extends U ? T :never
 //
 // type Omit<T,K extends keyof T> = Pick<T,Exclude<keyof T, K>>
+
+type A = 'x' | 'D';
+type B = 'x' | 'y' | 'c';
+//
+// type Y = B extends A ? never : B; // true
+
+type D = B extends A ? number : string;
+
+type C = Exclude<A, B>;
+
+type AB<T> = T extends 'x' ? 'a' : 'b';
+
+type All = AB<'x' | 'y'>;
+
+type Human = {
+    name: string;
+};
+type Duck = {
+    name: string;
+    occupation: string;
+};
+type Bool = Duck extends Human ? 'yes' : 'no'; // Bool => 'no'
