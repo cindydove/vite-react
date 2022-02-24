@@ -1,68 +1,68 @@
 // Promise.prototype.finally()
 
-new Promise((resolve, reject) => {
-    setTimeout(() => {
-        resolve('success');
-        // reject('fail');
-    }, 1000);
-})
-    .then((res) => {
-        console.log('success', res);
-        return Promise.resolve('success---');
-    })
-    .then((res) => {
-        console.log('xixixixi----', res);
-        return 'xixixixi';
-    })
-    .catch((err) => {
-        console.log('error', err);
-    })
-    .finally(() => {
-        console.log('finally');
-    })
-    .then((info) => {
-        console.log('success---', info);
-        return Promise.reject('fail+++');
-        // return new Promise((resolve, reject) => {
-        //     setTimeout(() => {
-        //         reject('fail----');
-        //     }, 1000);
-        // });
-    })
-    .catch((err) => {
-        console.log('error----', err);
-    });
+// new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//         resolve('success');
+//         // reject('fail');
+//     }, 1000);
+// })
+//     .then((res) => {
+//         console.log('success', res);
+//         return Promise.resolve('success---');
+//     })
+//     .then((res) => {
+//         console.log('xixixixi----', res);
+//         return 'xixixixi';
+//     })
+//     .catch((err) => {
+//         console.log('error', err);
+//     })
+//     .finally(() => {
+//         console.log('finally');
+//     })
+//     .then((info) => {
+//         console.log('success---', info);
+//         return Promise.reject('fail+++');
+//         // return new Promise((resolve, reject) => {
+//         //     setTimeout(() => {
+//         //         reject('fail----');
+//         //     }, 1000);
+//         // });
+//     })
+//     .catch((err) => {
+//         console.log('error----', err);
+//     });
 
 // Promise.prototype.all()
 // Promise.prototype.any()
 // Promise.prototype.allSettled()
-
-// const promise1 = () => {
-//     return new Promise((resolve, reject) => {
-//         setTimeout(() => {
-//             resolve('promise1');
-//             // reject('error promise1 ');
-//         }, 3000);
-//     });
-// };
-// const promise2 = () => {
-//     return new Promise((resolve, reject) => {
-//         setTimeout(() => {
-//             // resolve('promise2');
-//             reject('error promise2 ');
-//         }, 1000);
-//     });
-// };
-// const promise3 = () => {
-//     return new Promise((resolve, reject) => {
-//         setTimeout(() => {
-//             resolve('promise3');
-//             // reject('error promise3 ');
-//         }, 2000);
-//     });
-// };
-
-// //  Promise.all 只有全部为fulfilled，才会走到then里，否则只要有一个为rejected就会立即catch里面
+//
+const promise1 = () => {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            reject('promise1');
+            // reject('error promise1 ');
+        }, 3000);
+    });
+};
+const promise2 = () => {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            // resolve('promise2');
+            reject('error promise2--------- ');
+        }, 1000);
+    });
+};
+const promise3 = () => {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            reject('promise3');
+            // reject('error promise3 ');
+        }, 2000);
+    });
+};
+//
+// // //  Promise.all 只有全部为fulfilled，才会走到then里，否则只要有一个为rejected就会立即catch里面
 // Promise.all([promise1(), promise2(), promise3()])
 //     .then((res) => {
 //         console.log('Promise.all---', res);
@@ -105,3 +105,55 @@ new Promise((resolve, reject) => {
 //     .catch((error) => {
 //         console.log('Promise.race--- error', error);
 //     });
+
+// 限制数量、数据数组、处理函数
+
+function fetchApi(time, index) {
+    return new Promise((resolve, reject) => {
+        console.log(`执行第${index}个`);
+        setTimeout(() => {
+            resolve(`完成第${index}个---${time}`);
+        }, time);
+    });
+}
+
+const fetchArr = [10, 2000, 30, 40, 50, 60, 70, 80, 90, 100];
+
+function limitQueue(limit, fetchArr) {
+    return new Promise((allResolve) => {
+        const result = [];
+        let index = 0;
+        let fina = 0;
+        for (let i = 0; i < limit; i++) {
+            run(i);
+        }
+        function run(i) {
+            new Promise((resolve) => {
+                const currentFetch = fetchArr[index];
+                resolve(fetchApi(currentFetch, index));
+                index++;
+            })
+                .then((res) => {
+                    result[i] = res;
+                })
+                .catch((error) => {
+                    result[i] = error;
+                })
+                .finally(() => {
+                    fina++;
+                    if (index < fetchArr.length) {
+                        run(index);
+                    }
+                    if (fina === fetchArr.length) {
+                        allResolve(result);
+                    }
+                });
+        }
+    });
+}
+
+limitQueue(2, fetchArr)
+    .then(console.log)
+    .catch((res) => {
+        console.log('error', res);
+    });
