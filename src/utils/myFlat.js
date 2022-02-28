@@ -24,3 +24,11 @@ console.log('flat undefined', arrTest.myFlat());
 console.log('flat 2', arrTest.myFlat(2));
 console.log('flat 3', arrTest.myFlat(3));
 console.log('flat Infinity', arrTest.myFlat(Infinity));
+
+const compose = function (...fns) {
+    return fns.reduce(
+        (pre, cur) =>
+            (...args) =>
+                pre(cur(...args))
+    );
+};
