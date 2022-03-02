@@ -11,9 +11,13 @@ function Debounce(props) {
             <h3>防抖</h3>
             <Input
                 className={styles.input}
-                onChange={debounce((e: any) => {
-                    console.log('dx---- e', e.target);
-                }, 1000)}
+                onChange={debounce(
+                    (e: any) => {
+                        console.log('dx---- e', e.target);
+                    },
+                    1000,
+                    true
+                )}
             ></Input>
 
             <h3>节流</h3>
