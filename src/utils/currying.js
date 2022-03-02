@@ -12,6 +12,19 @@ const curry = (fn, ...args) =>
            */
           (..._args) => curry(fn, ...args, ..._args);
 
-const myCurry = (fn, ...args) => {
+const myCurry = (fn, ...args) =>
     fn.length > args.length ? (..._args) => myCurry(fn, ...args, ..._args) : fn(...args);
-};
+
+function add1(x, y, z) {
+    return x + y + z;
+}
+const add = myCurry(add1);
+console.log('dx---add', add);
+console.log(add(1, 2, 3));
+console.log(add(1)(2)(3));
+console.log(add(1, 2)(3));
+console.log(add(1)(2, 3));
+
+const add2 = myCurry(add1, 1);
+console.log(add2(2, 3));
+console.log(add(2)(3));
