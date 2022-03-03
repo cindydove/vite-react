@@ -24,6 +24,7 @@ const throttle = (func, delay) => {
         if (!timer) {
             timer = setTimeout(() => {
                 func.apply(this, arguments);
+                clearTimeout(timer);
                 timer = null;
             }, delay);
         }

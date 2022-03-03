@@ -174,3 +174,18 @@ type Duck = {
     occupation: string;
 };
 type Bool = Duck extends Human ? 'yes' : 'no'; // Bool => 'no'
+
+type Duck1 = { name: string; sex: number };
+
+type Duck11 = Duck | Duck1;
+
+const obj: Duck11 = { name: '1', occupation: '1' };
+
+const obj1: Duck & Duck1 = { name: '1', occupation: '1', sex: 1 };
+
+interface IA {
+    name: string;
+}
+interface IB extends IA {
+    name: string;
+}
