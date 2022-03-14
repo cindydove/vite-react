@@ -64,3 +64,18 @@ console.log(
     new SingleClass2('sven1') === new SingleClass2('jack')
 );
 
+
+function Danli(name){
+    console.log("dx---Danli.instance",Danli.instance)
+    if(!Danli.instance){
+        Danli.instance = this
+        this.name = name
+    }
+    return Danli.instance
+}
+console.log(
+  "dx--- danli",
+  new Danli('sven1') === new Danli('jack')
+);
+
+
