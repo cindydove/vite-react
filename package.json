@@ -6,6 +6,7 @@
         "build": "tsc && vite build",
         "serve": "vite preview"
     },
+    "type": "module",
     "dependencies": {
         "@cindydove/react_dx_ui": "^1.0.5",
         "@zzzzw/happy-ui": "^1.1.0",
