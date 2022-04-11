@@ -37,30 +37,30 @@
 // Promise.prototype.any()
 // Promise.prototype.allSettled()
 //
-const promise1 = () => {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            reject('promise1');
-            // reject('error promise1 ');
-        }, 3000);
-    });
-};
-const promise2 = () => {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            // resolve('promise2');
-            reject('error promise2--------- ');
-        }, 1000);
-    });
-};
-const promise3 = () => {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            reject('promise3');
-            // reject('error promise3 ');
-        }, 2000);
-    });
-};
+// const promise1 = () => {
+//     return new Promise((resolve, reject) => {
+//         setTimeout(() => {
+//             reject('promise1');
+//             // reject('error promise1 ');
+//         }, 3000);
+//     });
+// };
+// const promise2 = () => {
+//     return new Promise((resolve, reject) => {
+//         setTimeout(() => {
+//             // resolve('promise2');
+//             reject('error promise2--------- ');
+//         }, 1000);
+//     });
+// };
+// const promise3 = () => {
+//     return new Promise((resolve, reject) => {
+//         setTimeout(() => {
+//             reject('promise3');
+//             // reject('error promise3 ');
+//         }, 2000);
+//     });
+// };
 //
 // // //  Promise.all 只有全部为fulfilled，才会走到then里，否则只要有一个为rejected就会立即catch里面
 // Promise.all([promise1(), promise2(), promise3()])
@@ -117,7 +117,7 @@ function fetchApi(time, index) {
     });
 }
 
-const fetchArr = [10, 2000, 30, 40, 50, 60, 70, 80, 90, 100];
+const fetchArr = [3000, 2000, 30, 40, 50, 60, 70, 80, 90, 100];
 
 function limitQueue(limit, fetchArr) {
     return new Promise((allResolve) => {
