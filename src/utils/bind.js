@@ -6,7 +6,7 @@ Function.prototype.myBind = function (context, ...arg) {
     const fn = this;
     return function (...args) {
         console.log('newTHis', newThis, arg);
-        fn.myApply(newThis, [...arg.slice(1), ...args]);
+        fn.myApply(newThis, [...arg, ...args]);
     };
 };
 
