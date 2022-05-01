@@ -51,24 +51,28 @@
 // console.log('dx---jiaoji', jiaoji([1, 2, 3, 4, 5, 6], [4, 5, 7, 4, 5, 8]));
 
 //获取最长不重复字符串
-// function lengthOfLongestSubstring(str) {
-//     if (str === '') return 0;
-//     let start = 0,
-//         maxLen = 0;
-//     const map = new Map();
-//     const len = str.length;
-//     for (let i = 0; i < len; i++) {
-//         const c = str[i];
-//         if (map.has(c)) {
-//             start = Math.max(map.get(c) + 1, start);
-//         }
-//         map.set(c, i);
-//         maxLen = Math.max(i - start + 1, maxLen);
-//     }
-//     return maxLen;
-// }
-//
-// console.log('dx---abcabcdabcdef', lengthOfLongestSubstring('abcabcdabcdef'));
+function lengthOfLongestSubstring(str) {
+    if (str === '') return 0;
+    let startIndex = 0,
+        maxLen = 0;
+    const map = new Map();
+    const len = str.length;
+    for (let i = 0; i < len; i++) {
+        const cur = str[i];
+        if (map.has(cur)) {
+            startIndex = Math.max(map.get(cur) + 1, startIndex);
+        }
+        map.set(cur, i);
+        maxLen = Math.max(i - startIndex + 1, maxLen);
+    }
+    return {
+        maxLen,startIndex
+    };
+}
+abc
+cb
+cbd
+console.log('dx---abcabcdabcdef', lengthOfLongestSubstring('abcbd'));
 
 // todo    获取二叉树最深子节点并返回
 
@@ -97,40 +101,95 @@
 // 所以你应该输出2.
 //
 
-function findContentChildren(child, cookie) {
-    const newChild = child.sort((a, b) => a - b);
-    const newCookie = cookie.sort((a, b) => a - b);
+// function findContentChildren(child, cookie) {
+//     const newChild = child.sort((a, b) => a - b);
+//     const newCookie = cookie.sort((a, b) => a - b);
+//
+//     const childLen = child.length;
+//     const cookieLen = cookie.length;
+//
+//     console.log('dx---newChild,newCookie', newChild, newCookie);
+//     let childIndex = 0;
+//     let cookieIndex = 0;
+//     let count = 0;
+//
+//     // for (let i = 0; i < newChild.length; i++) {
+//     //     console.log('dx-i，cookieIndex', i, cookieIndex);
+//     //     if (newCookie[cookieIndex] >= newChild[i]) {
+//     //         count++;
+//     //         cookieIndex++;
+//     //         continue;
+//     //     } else {
+//     //         i--;
+//     //         cookieIndex++;
+//     //     }
+//     // }
+//
+//     while (childIndex < childLen && cookieIndex < cookieLen) {
+//         if (newChild[childIndex] <= newCookie[cookieIndex]) {
+//             cookieIndex++;
+//             childIndex++;
+//             count++;
+//         } else {
+//             cookieIndex++;
+//         }
+//     }
+//     return count;
+// }
+//
+// console.log('dx---findContentChildren', findContentChildren([1, 2, 4], [1, 2, 3, 4]));
 
-    const childLen = child.length;
-    const cookieLen = cookie.length;
 
-    console.log('dx---newChild,newCookie', newChild, newCookie);
-    let childIndex = 0;
-    let cookieIndex = 0;
-    let count = 0;
+// 求闭合的子串
+// function fun(str) {
+//     const list = []
+//     const strArr = str.split('')
+//     strArr.forEach((item,index)=>{
+//         // console.log(strArr,item === ')' , list.length )
+//         if(item ==='('){
+//             list.push(index)
+//         }else if(item === ')' && strArr[list[list.length-1] ]==='('){
+//
+//             console.log(str.slice(list.pop()+1,index) )
+//         }
+//
+//     })
+//     // your code
+//
+// }
+//
+// fun("a(b(c)d)e)f(g)h)i")
 
-    // for (let i = 0; i < newChild.length; i++) {
-    //     console.log('dx-i，cookieIndex', i, cookieIndex);
-    //     if (newCookie[cookieIndex] >= newChild[i]) {
-    //         count++;
-    //         cookieIndex++;
-    //         continue;
-    //     } else {
-    //         i--;
-    //         cookieIndex++;
-    //     }
-    // }
 
-    while (childIndex < childLen && cookieIndex < cookieLen) {
-        if (newChild[childIndex] <= newCookie[cookieIndex]) {
-            cookieIndex++;
-            childIndex++;
-            count++;
-        } else {
-            cookieIndex++;
-        }
-    }
-    return count;
-}
-
-console.log('dx---findContentChildren', findContentChildren([1, 2, 4], [1, 2, 3, 4]));
+// function isValidate(str){
+//     const strArr = str.split('')
+//     const strLength = str.length
+//     if(strLength % 2 === 1) return false
+//     const map = {
+//         '(':')',
+//         '[':']',
+//         '{':'}'
+//     }
+//
+//     const list = []
+//     let last = ''
+//     for(let i =0;i<strLength;i++){
+//         const cur = strArr[i]
+//         if(map[cur]){
+//             list.push(cur)
+//             last = cur
+//         }else{
+//             console.log("dx----",map[last],cur)
+//             // list最后一项的右括号为当前字符
+//             if(map[last] === cur){
+//                 list.pop()
+//                 last = list[list.length-1]
+//             }else{
+//                 return false
+//             }
+//         }
+//     }
+//     return list.length === 0
+// }
+//
+// console.log("dx---isValidate",isValidate('({[]'))

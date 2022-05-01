@@ -22,6 +22,7 @@ function maxLength(str) {
     let startIndex = 0;
     let maxLen = 0;
     let maxStr = '';
+    let maxStrList = []
     const map = new Map();
     for (let i = 0; i < str.length; i++) {
         const current = str[i];
@@ -31,12 +32,15 @@ function maxLength(str) {
         map.set(current, i);
         if (i - startIndex + 1 > maxLen) {
             maxStr = str.slice(startIndex, i + 1);
+            maxStrList = [maxStr]
+        }else if(i - startIndex + 1 === maxLen){
+            maxStrList.push(str.slice(startIndex, i + 1))
         }
         maxLen = Math.max(i - startIndex + 1, maxLen);
     }
     return {
         maxLen,
-        maxStr
+        maxStrList
     };
 }
-console.log('dx---abcabcdabcdef', maxLength('abcabcdabcdef'));
+console.log('dx---abcabcdabcdef', maxLength('abcabccbdcbde'));

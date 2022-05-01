@@ -189,3 +189,24 @@ interface IA {
 interface IB extends IA {
     name: string;
 }
+
+
+interface Lianhe1 {
+    name:string;
+    age:number;
+    parent:string;
+}
+
+interface lianhe2 {
+    name:string;
+    age:number;
+    sex:number
+}
+
+let people:Lianhe1| lianhe2= {
+    name:'dx',
+    age:11,
+    sex:1
+}
+
+
