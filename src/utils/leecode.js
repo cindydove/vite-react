@@ -97,40 +97,47 @@
 // 所以你应该输出2.
 //
 
-function findContentChildren(child, cookie) {
-    const newChild = child.sort((a, b) => a - b);
-    const newCookie = cookie.sort((a, b) => a - b);
+// function findContentChildren(child, cookie) {
+//     const newChild = child.sort((a, b) => a - b);
+//     const newCookie = cookie.sort((a, b) => a - b);
+//
+//     const childLen = child.length;
+//     const cookieLen = cookie.length;
+//
+//     console.log('dx---newChild,newCookie', newChild, newCookie);
+//     let childIndex = 0;
+//     let cookieIndex = 0;
+//     let count = 0;
+//
+//     // for (let i = 0; i < newChild.length; i++) {
+//     //     console.log('dx-i，cookieIndex', i, cookieIndex);
+//     //     if (newCookie[cookieIndex] >= newChild[i]) {
+//     //         count++;
+//     //         cookieIndex++;
+//     //         continue;
+//     //     } else {
+//     //         i--;
+//     //         cookieIndex++;
+//     //     }
+//     // }
+//
+//     while (childIndex < childLen && cookieIndex < cookieLen) {
+//         if (newChild[childIndex] <= newCookie[cookieIndex]) {
+//             cookieIndex++;
+//             childIndex++;
+//             count++;
+//         } else {
+//             cookieIndex++;
+//         }
+//     }
+//     return count;
+// }
+//
+// console.log('dx---findContentChildren', findContentChildren([1, 2, 4], [1, 2, 3, 4]));
 
-    const childLen = child.length;
-    const cookieLen = cookie.length;
 
-    console.log('dx---newChild,newCookie', newChild, newCookie);
-    let childIndex = 0;
-    let cookieIndex = 0;
-    let count = 0;
+// 真题描述： 给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。
+// 给定 nums = [2, 7, 11, 15], target = 9
 
-    // for (let i = 0; i < newChild.length; i++) {
-    //     console.log('dx-i，cookieIndex', i, cookieIndex);
-    //     if (newCookie[cookieIndex] >= newChild[i]) {
-    //         count++;
-    //         cookieIndex++;
-    //         continue;
-    //     } else {
-    //         i--;
-    //         cookieIndex++;
-    //     }
-    // }
+// 真题描述：给你两个有序整数数组 nums1 和 nums2，请你将 nums2 合并到 nums1 中，使 nums1 成为一个有序数组。
 
-    while (childIndex < childLen && cookieIndex < cookieLen) {
-        if (newChild[childIndex] <= newCookie[cookieIndex]) {
-            cookieIndex++;
-            childIndex++;
-            count++;
-        } else {
-            cookieIndex++;
-        }
-    }
-    return count;
-}
-
-console.log('dx---findContentChildren', findContentChildren([1, 2, 4], [1, 2, 3, 4]));
