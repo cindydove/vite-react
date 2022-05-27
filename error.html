@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>错误捕获</title>
+<!--    <link href="https://yun.tuia.cn/foundnull.css" rel="stylesheet"/>-->
+</head>
+<body>
+<div id="root">
+<!--    <img src="https://yun.tuia.cn/image/kkk.png">-->
+</div>
+<script>
+    Promise.reject('promise err')
+    // fetch('/remote/notdefined', {})
+
+    // window.onerror = function(message, source, lineno, colno, error) {
+    //     console.log('捕获到异常-JS 运行时错误：', {message, source, lineno, colno, error});
+    // }
+    // window.addEventListener('error', (error) => {
+    //     console.log('捕获到异常-资源加载异常或JS 运行时错误：', error);
+    // }, true)
+    window.addEventListener("unhandledrejection", function(e){
+        console.log('捕获到异常-promise异常：', e);
+    });
+
+
+</script>
+
+</body>
+</html>

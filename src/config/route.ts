@@ -6,16 +6,20 @@ import ForwardRef from '@/pages/ForwardRef';
 import HooksTest from '@/pages/Hooks';
 import StateTest from '@/pages/stateTest';
 import DOMDiff from '@/pages/DOMDiff';
+import Error from '@/pages/Error';
 
 const routes = [
-    { path: '/router', component: ReactRouter, name: '路由' },
-    { path: '/redux', component: Redux, name: 'redux' },
-    { path: '/virtualDom', component: VirtualDom, name: 'VirtualDom' },
-    { path: '/debounce', component: Debounce, name: 'Debounce' },
-    { path: '/forwardRef', component: ForwardRef, name: 'ForwardRef' },
-    { path: '/HooksTest', component: HooksTest, name: 'HooksTest' },
-    { path: '/StateTest', component: StateTest, name: 'StateTest' },
-    { path: '/domDiff', component: DOMDiff, name: 'DOMDiff' }
+    // { path: '/router', component: ReactRouter, name: '路由' },
+    // { path: '/redux', component: Redux, name: 'redux' },
+    // { path: '/virtualDom', component: VirtualDom, name: 'VirtualDom' },
+    // { path: '/debounce', component: Debounce, name: 'Debounce' },
+    // { path: '/forwardRef', component: ForwardRef, name: 'ForwardRef' },
+    // { path: '/HooksTest', component: HooksTest, name: 'HooksTest' },
+    // { path: '/StateTest', component: StateTest, name: 'StateTest' },
+    // { path: '/domDiff', component: DOMDiff, name: 'DOMDiff' }
+    { path: '/error', component: Error, name: '错误捕获' }
+
+
 ];
 
 export default routes;
