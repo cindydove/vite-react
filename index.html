@@ -6,8 +6,26 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>cindydove program</title>
     </head>
+    <script>
+        window.addEventListener("unhandledrejection", function(e){
+            console.error(' unhandledrejection 捕获到异常：', e);
+            e.preventDefault();
+        });
+        //
+        // window.addEventListener('error', (e) => {
+        //     console.error('error 捕获到异常：', e);
+        //     e.preventDefault();
+        // }, true)
+        //
+        // window.onerror = function(message, source, lineno, colno, error) {
+        //     console.error('window.onerror 捕获到异常：',{message, source, lineno, colno, error});
+        //     return true;
+        // }
+    </script>
     <body>
         <div id="root"></div>
         <script type="module" src="/src/main.tsx"></script>
+<!--        <script src="https://yun.tuia.cn/foundnull.js"></script>-->
+<!--        <link href="https://yun.tuia.cn/foundnull.css" rel="stylesheet"/>-->
     </body>
 </html>
