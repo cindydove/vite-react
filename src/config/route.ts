@@ -7,6 +7,7 @@ import HooksTest from '@/pages/Hooks';
 import StateTest from '@/pages/stateTest';
 import DOMDiff from '@/pages/DOMDiff';
 import CatchError from '@/pages/Error/CatchError';
+import Radash  from '@/pages/Radash/index';
 
 const routes = [
     // { path: '/router', component: ReactRouter, name: '路由' },
@@ -17,7 +18,8 @@ const routes = [
     // { path: '/HooksTest', component: HooksTest, name: 'HooksTest' },
     // { path: '/StateTest', component: StateTest, name: 'StateTest' },
     // { path: '/domDiff', component: DOMDiff, name: 'DOMDiff' }
-    { path: '/CatchError', component: CatchError, name: 'CatchError' }
+    // { path: '/CatchError', component: CatchError, name: 'CatchError' }
+    { path: '/Radash', component: Radash, name: 'Radash' }
 
 ];
 
