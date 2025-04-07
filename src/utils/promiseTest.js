@@ -1,37 +1,37 @@
 // Promise.prototype.finally()
 
-new Promise((resolve, reject) => {
-    setTimeout(() => {
-        resolve('success');
-        // reject('fail');
-    }, 1000);
-})
-    .then((res) => {
-        console.log('success', res);
-        return Promise.resolve('success---');
-    })
-    .then((res) => {
-        console.log('xixixixi----', res);
-        return 'xixixixi';
-    })
-    .catch((err) => {
-        console.log('error', err);
-    })
-    .finally(() => {
-        console.log('finally');
-    })
-    .then((info) => {
-        console.log('success---', info);
-        return Promise.reject('fail+++');
-        // return new Promise((resolve, reject) => {
-        //     setTimeout(() => {
-        //         reject('fail----');
-        //     }, 1000);
-        // });
-    })
-    .catch((err) => {
-        console.log('error----', err);
-    });
+// new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//         resolve('success');
+//         // reject('fail');
+//     }, 1000);
+// })
+//     .then((res) => {
+//         console.log('success', res);
+//         return Promise.resolve('success---');
+//     })
+//     .then((res) => {
+//         console.log('xixixixi----', res);
+//         return 'xixixixi';
+//     })
+//     .catch((err) => {
+//         console.log('error', err);
+//     })
+//     .finally(() => {
+//         console.log('finally');
+//     })
+//     .then((info) => {
+//         console.log('success---', info);
+//         return Promise.reject('fail+++');
+//         // return new Promise((resolve, reject) => {
+//         //     setTimeout(() => {
+//         //         reject('fail----');
+//         //     }, 1000);
+//         // });
+//     })
+//     .catch((err) => {
+//         console.log('error----', err);
+//     });
 
 // Promise.prototype.all()
 // Promise.prototype.any()
@@ -105,3 +105,38 @@ new Promise((resolve, reject) => {
 //     .catch((error) => {
 //         console.log('Promise.race--- error', error);
 //     });
+
+console.log('script start')
+
+async function async1() {
+    await async2()
+    console.log('async1 end')
+}
+async function async2() {
+    console.log('async2 end')
+}
+async1()
+
+setTimeout(function() {
+    console.log('setTimeout')
+}, 0)
+
+new Promise(resolve => {
+    console.log('Promise')
+    resolve(1)
+})
+    .then(function(res) {
+        console.log('promise1',res)
+    })
+    .then(function(res) {
+        console.log('promise2',res)
+    })
+
+console.log('script end')
+new Promise((resolve)=>{resolve(1)}).then(()=>{}).then(res=>{console.log('dx---res',res)})
+
+var a
+function a(){
+    console.log(a)
+}
+console.log("dx--a",a)

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edge Detection and Cropping</title>
+    <!-- 引入 TensorFlow.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+    <!-- 引入 OpenCV.js -->
+    <script src="https://docs.opencv.org/4.x/opencv.js" type="text/javascript"></script>
+</head>
+<body>
+<script>
+    async function loadImageFromUrl(url) {
+        return new Promise((resolve, reject) => {
+            const img = new Image();
+            img.crossOrigin = 'anonymous';
+            img.onload = () => resolve(img);
+            img.onerror = reject;
+            img.src = url;
+        });
+    }
+
+    async function detectEdgesAndGetRect(image) {
+        return new Promise((resolve, reject) => {
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = image.width;
+            canvas.height = image.height;
+            ctx.drawImage(image, 0, 0);
+
+            const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+            const mat = cv.matFromImageData(imageData);
+
+            // Convert to grayscale
+            const gray = new cv.Mat();
+            cv.cvtColor(mat, gray, cv.COLOR_RGBA2GRAY);
+
+            // Blur the image
+            const blurred = new cv.Mat();
+            cv.GaussianBlur(gray, blurred, new cv.Size(5, 5), 0);
+
+            // Edge detection using Canny
+            const edges = new cv.Mat();
+            cv.Canny(blurred, edges, 50, 150);
+
+            // Find contours
+            const contours = new cv.MatVector();
+            const hierarchy = new cv.Mat();
+            cv.findContours(edges, contours, hierarchy, cv.RETR_EXTERNAL, cv.CHAIN_APPROX_SIMPLE);
+
+            const rects = [];
+            for (let i = 0; i < contours.size(); ++i) {
+                const cnt = contours.get(i);
+                const rect = cv.boundingRect(cnt);
+                rects.push([rect.x, rect.y, rect.width, rect.height]);
+            }
+
+            mat.delete();
+            gray.delete();
+            blurred.delete();
+            edges.delete();
+            contours.delete();
+            hierarchy.delete();
+
+            resolve(rects);
+        });
+    }
+
+    async function cropImage(image, rect) {
+        const [x, y, width, height] = rect;
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = width;
+        canvas.height = height;
+        ctx.drawImage(image, -x, -y);
+
+        return canvas.toDataURL('image/png');
+    }
+
+    async function main() {
+        const url = "https://lf3-icem.bytetos.com/obj/worktime/199ad9cc-988c-4fa1-a03c-70962affd15a_10006-removebg-preview(2).png";
+        const image = await loadImageFromUrl(url);
+        const rects = await detectEdgesAndGetRect(image);
+
+        if (rects.length > 0) {
+            const croppedImageUrl = await cropImage(image, rects[0]);
+            const croppedImage = new Image();
+            croppedImage.src = croppedImageUrl;
+            document.body.appendChild(croppedImage);
+        } else {
+            console.log('未检测到任何矩形框');
+        }
+    }
+
+    main();
+</script>
+</body>
+</html>
